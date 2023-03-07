@@ -18,11 +18,9 @@ const reducer = (oldContext, action) => {
         case 'cart/addItem':
             return {
                 ...oldContext,
-                // .concat creates a new array without modifying
+                // the spread operator creates a new array without modifying
                 // the old one
-                shoppingCart: oldContext.shoppingCart.concat([
-                    action.payload
-                ])
+                shoppingCart: [ ...oldContext.shoppingCart, action.payload ]
             }
     }
 
