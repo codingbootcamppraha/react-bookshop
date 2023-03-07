@@ -1,4 +1,5 @@
 import './MainContent.scss';
+import Homepage from './Homepage';
 
 export default function MainContent({ page }) {
 
@@ -6,7 +7,7 @@ export default function MainContent({ page }) {
 
     if (page === '') {
         content = (
-            <h2>Welcome into our Bookshop</h2>
+            <Homepage />
         )
     } else if (page === 'about') {
         content = (
