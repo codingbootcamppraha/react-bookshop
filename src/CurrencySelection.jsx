@@ -1,9 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import Context from "./Context";
+// import CurrencyContext from "./CurrencyContext";
 
 export default function CurrencySelection() {
 
-    const [currency, setCurrency] = useState(localStorage.getItem('currency') || 'EUR');
-    const [exchangeRate, setExchangeRate] = useState(1);
+    const { context: { currency, exchangeRate }, dispatch } = useContext(Context);
+
+    // load the current value of the CurrencyContext
+    // const entireValueOfTheContext = useContext(CurrencyContext);
+    // const { currency, setCurrency } = useContext(CurrencyContext);
+    // const { exchangeRate, setExchangeRate } = useContext(CurrencyContext);
+
+    // const [currency, setCurrency] = useState(localStorage.getItem('currency') || 'EUR');
+    // const [exchangeRate, setExchangeRate] = useState(1);
 
     const handleSelect = (event) => {
 
@@ -11,7 +20,14 @@ export default function CurrencySelection() {
         event.target;       // <select>
         event.target.value; // the selected value
 
-        setCurrency(event.target.value);
+        // setCurrency(event.target.value);
+
+        // dispatch an *action* into the context
+        // (it will be received by the *reducer function*)
+        dispatch({
+            type: 'currency/set',
+            payload: event.target.value
+        })
     }
 
     /**
@@ -27,7 +43,12 @@ export default function CurrencySelection() {
             return rate.currency === currency;
         });
 
-        setExchangeRate(exchange_rate.rate);
+        // setExchangeRate(exchange_rate.rate);
+
+        dispatch({
+            type: 'exchangeRate/set',
+            payload: exchange_rate.rate
+        })
     }
 
     useEffect(() => {
@@ -49,6 +70,7 @@ export default function CurrencySelection() {
                 <option value="EUR">EUR</option>
                 <option value="USD">USD</option>
                 <option value="CZK">CZK</option>
+                <option value="AUD">AUD</option>
             </select>
 
             {
