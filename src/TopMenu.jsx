@@ -2,7 +2,7 @@ import { useState } from "react"
 import './TopMenu.scss';
 import TopMenuItem from "./TopMenuItem";
 
-export default function TopMenu({ currentItem }) {
+export default function TopMenu({ currentItem, setCurrentItem }) {
 
 
     console.log(currentItem);
@@ -32,10 +32,10 @@ export default function TopMenu({ currentItem }) {
                 open
                     ? (
                         <nav className="topmenu__links">
-                            <TopMenuItem currentItem={ currentItem } slug="" label="Home" />
-                            <TopMenuItem currentItem={ currentItem } slug="products" label="Products" />
-                            <TopMenuItem currentItem={ currentItem } slug="about" label="About us" />
-                            <TopMenuItem currentItem={ currentItem } slug="contact" label="Contact" />
+                            <TopMenuItem currentItem={ currentItem } setCurrentItem={ setCurrentItem } slug="" label="Home" />
+                            <TopMenuItem currentItem={ currentItem } setCurrentItem={ setCurrentItem } slug="products" label="Products" />
+                            <TopMenuItem currentItem={ currentItem } setCurrentItem={ setCurrentItem } slug="about" label="About us" />
+                            <TopMenuItem currentItem={ currentItem } setCurrentItem={ setCurrentItem } slug="contact" label="Contact" />
 
                             <div onClick={ handleCloseMenu }>&times;</div>
                         </nav>

@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import './Header.scss';
 import TopMenu from './TopMenu';
 
-export default function Header() {
+export default function Header({ currentItem, setCurrentItem }) {
 
     return (
         <header className="header">
-            <div className="header__sitename">
+            <div
+                className="header__sitename"
+                onClick={ () => setCurrentItem('') }
+            >
                 Flourish and Blotts
             </div>
 
-            <TopMenu currentItem={ 'about' }  />
+            <TopMenu currentItem={ currentItem } setCurrentItem={ setCurrentItem }  />
         </header>
     )
 

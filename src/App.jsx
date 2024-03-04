@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import './App.scss'
 import Footer from './Footer'
 import Header from './Header'
 import MainContent from './MainContent'
 
 function App() {
+
+  const [currentItem, setCurrentItem] = useState('');
+
   return (
     <div className="app">
 
-        <Header />
+        <Header currentItem={ currentItem } setCurrentItem={ setCurrentItem } />
 
-        <MainContent />
+        <MainContent currentItem={ currentItem } />
 
         <Footer />
 
