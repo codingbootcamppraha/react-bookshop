@@ -1,9 +1,18 @@
 import './App.scss'
+import Footer from './Footer'
+import Header from './Header'
+import MainContent from './MainContent'
 
 function App() {
   return (
     <div className="app">
-        <h1 className="app__headline">Flourish and Blotts</h1>
+
+        <Header />
+
+        <MainContent />
+
+        <Footer />
+
     </div>
   )
 }
