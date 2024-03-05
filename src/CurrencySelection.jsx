@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import CurrencyContext from './CurrencyContext'
+import Context from "./Context";
 
 export default function CurrencySelection() {
 
-    const [currency, setCurrency] = useState('')
+    // const { currency, setCurrency } = useContext(CurrencyContext);
+    const { state: { currency }, dispatch } = useContext(Context);
+
     const [exchangeRate, setExchangeRate] = useState(1);
     const [currencies, setCurrencies] = useState([]);
 
@@ -26,7 +30,11 @@ export default function CurrencySelection() {
     }
 
     const handleCurrencyChange = event => {
-        setCurrency(event.target.value);
+        // setCurrency(event.target.value);
+        dispatch({
+            type: 'currency/set',
+            payload: event.target.value
+        })
     }
 
     useEffect(() => {
@@ -60,6 +68,8 @@ export default function CurrencySelection() {
             </select>
 
             Exchange rate (to EUR): { exchangeRate }
+            <br />
+            Currency from context: { currency }
         </div>
     )
 
