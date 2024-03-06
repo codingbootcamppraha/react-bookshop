@@ -6,6 +6,7 @@ import MainContent from './MainContent'
 import CurrencyContext from './CurrencyContext'
 import Context from './Context';
 import reducer from './reducer';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
@@ -32,26 +33,28 @@ function App() {
 
   return (
 
-    <Context.Provider value={ { state, dispatch } }>
-      {/* <CurrencyContext.Provider value={
-        {
-          currency: currency,
-          setCurrency: setCurrency
-        }
-      }> */}
+    <BrowserRouter>
+      <Context.Provider value={ { state, dispatch } }>
+        {/* <CurrencyContext.Provider value={
+          {
+            currency: currency,
+            setCurrency: setCurrency
+          }
+        }> */}
 
-        <div className="app">
+          <div className="app">
 
-            <Header currentItem={ currentItem } setCurrentItem={ setCurrentItem } />
+              <Header currentItem={ currentItem } setCurrentItem={ setCurrentItem } />
 
-            <MainContent currentItem={ currentItem } />
+              <MainContent currentItem={ currentItem } />
 
-            <Footer />
+              <Footer />
 
-        </div>
+          </div>
 
-      {/* </CurrencyContext.Provider> */}
-    </Context.Provider>
+        {/* </CurrencyContext.Provider> */}
+      </Context.Provider>
+    </BrowserRouter>
   )
 }
 

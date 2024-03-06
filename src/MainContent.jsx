@@ -2,6 +2,12 @@ import './MainContent.scss';
 import CurrencyContext from './CurrencyContext'
 import { useContext } from 'react';
 import Context from './Context';
+import { Route, Routes } from 'react-router-dom';
+import Homepage from './pages/Homepage';
+import AboutUs from './pages/AboutUs';
+import Contact from './pages/Contact';
+import BookDetail from './pages/BookDetail';
+import SubpageLayout from './SubpageLayout';
 
 export default function MainContent({ currentItem }) {
 
@@ -31,27 +37,15 @@ export default function MainContent({ currentItem }) {
                 <button onClick={ loginUser }>Login</button>
             </p>
 
+            <Routes>
+                <Route path="/" element={ <Homepage /> } />
 
-            {
-                currentItem === ''
-                    && (
-                        <p>Welcome!</p>
-                    )
-            }
-
-            {
-                currentItem === 'about'
-                    && (
-                        <p>About us: ...</p>
-                    )
-            }
-
-            {
-                currentItem === 'contact'
-                    && (
-                        <p>Please contact us</p>
-                    )
-            }
+                <Route path="/" element={ <SubpageLayout /> }>
+                    <Route path="/about-us" element={ <AboutUs /> } />
+                    <Route path="/contact" element={ <Contact /> } />
+                    <Route path="/book/:id" element={ <BookDetail /> } />
+                </Route>
+            </Routes>
 
         </main>
     )
